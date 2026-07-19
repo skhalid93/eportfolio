@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Khalid — e-Portfolio</title>
+<style>
+  :root{
+    --navy:#1F3461;
+    --navy-deep:#152444;
+    --gold:#B08D3E;
+    --paper:#FBFAF7;
+    --ink:#22262E;
+    --muted:#5B6472;
+    --line:#E3DFD6;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Iowan Old Style","Georgia","Palatino Linotype",serif;
+    line-height:1.65;
+  }
+  .sans{ font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--navy-deep);
+    color:#fff;
+    padding:0 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header.site .brand{ font-weight:700; letter-spacing:.02em; font-size:1.05rem;}
+  header.site .brand span{ color:var(--gold); }
+  nav a{
+    color:#EDE7D8; text-decoration:none; margin-left:22px; font-size:.92rem;
+    padding:8px 2px; border-bottom:2px solid transparent; transition:.15s;
+  }
+  nav a:hover{ border-bottom-color:var(--gold); color:#fff; }
+
+  .hero{
+    background:
+      radial-gradient(1100px 420px at 85% -10%, rgba(176,141,62,.18), transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#F4F1E8;
+    padding:72px 24px 56px;
+  }
+  .hero-inner{ max-width:920px; margin:0 auto; }
+  .eyebrow{
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-transform:uppercase; letter-spacing:.16em; font-size:.72rem; color:var(--gold);
+    margin-bottom:14px; font-weight:700;
+  }
+  .hero h1{ font-size:2.6rem; margin:0 0 10px; font-weight:600; }
+  .hero p.lede{ font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width:620px; color:#D7D3C4; font-size:1.02rem; }
+
+  main{ max-width:920px; margin:0 auto; padding:56px 24px 100px; }
+
+  section{ margin-bottom:64px; }
+  section > h2{
+    font-size:1.6rem; margin:0 0 6px; color:var(--navy-deep);
+    border-bottom:3px solid var(--gold); display:inline-block; padding-bottom:6px;
+  }
+  section > p.section-sub{
+    font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color:var(--muted); font-size:.9rem; margin:10px 0 26px;
+  }
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:22px 24px; margin-bottom:16px;
+  }
+  .card h3{ margin:0 0 8px; font-size:1.12rem; color:var(--navy-deep); }
+  .tag{
+    font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display:inline-block; background:var(--navy); color:#fff; font-size:.68rem;
+    letter-spacing:.05em; padding:3px 9px; border-radius:20px; margin-right:6px; margin-bottom:8px;
+  }
+  .card p{ margin:8px 0; }
+  .card .meta{
+    font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size:.85rem; color:var(--muted);
+  }
+  .btn{
+    font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display:inline-block; margin-top:10px; text-decoration:none;
+    background:var(--navy-deep); color:#fff; font-size:.85rem; font-weight:600;
+    padding:9px 16px; border-radius:4px; transition:.15s;
+  }
+  .btn:hover{ background:var(--gold); color:var(--navy-deep); }
+
+  .outcome{
+    border-left:3px solid var(--navy); padding:4px 0 4px 18px; margin-bottom:20px;
+  }
+  .outcome h4{ margin:0 0 6px; font-size:1rem; color:var(--navy-deep); }
+  .outcome p{ margin:0; color:var(--ink); font-size:.98rem; }
+
+  table.skills{
+    width:100%; border-collapse:collapse; font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size:.86rem;
+    background:var(--card); border:1px solid var(--line);
+  }
+  table.skills th{
+    background:var(--navy-deep); color:#fff; text-align:left; padding:10px 12px; font-weight:600;
+  }
+  table.skills td{ padding:10px 12px; border-top:1px solid var(--line); vertical-align:top; }
+  table.skills tr:nth-child(even) td{ background:#F5F3EC; }
+  .rating{ font-weight:700; color:var(--navy-deep); }
+
+  .timeline{ border-left:2px solid var(--line); padding-left:20px; }
+  .tl-item{ margin-bottom:18px; }
+  .tl-date{
+    font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size:.75rem; letter-spacing:.05em; text-transform:uppercase; color:var(--gold); font-weight:700;
+  }
+  .tl-item p{ margin:4px 0 0; }
+
+  footer{
+    text-align:center; padding:30px; color:var(--muted);
+    font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size:.8rem;
+    border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="brand">Sarah Khalid <span>· e-Portfolio</span></div>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#module">Security &amp; Risk Management</a>
+  </nav>
+</header>
+
+<div class="hero" id="about">
+  <div class="hero-inner">
+    <div class="eyebrow">University of Essex Online</div>
+    <h1>Sarah Khalid</h1>
+    <p class="lede">This e-portfolio brings together my work, reflections, and professional development from the Security &amp; Risk Management module — including a team risk assessment, a follow-on quantitative risk and disaster recovery report, and my individual reflection on the process.</p>
+  </div>
+</div>
+
+<main>
+
+  <section id="module">
+    <h2>Security &amp; Risk Management</h2>
+    <p class="section-sub">Module page — learning outcomes, artefacts, team process, reflection, and professional development.</p>
+
+    <h3 class="sans" style="color:var(--navy-deep); font-size:1.05rem; margin-bottom:14px;">Summary of Learning Outcomes</h3>
+
+    <div class="outcome">
+      <h4>1. Identify and analyse critically security risks, threats and vulnerabilities in information systems, accounting for the current threat landscape.</h4>
+      <p>Evidenced in the initial risk identification report (Unit 6), where I selected and justified ISO/IEC 27005:2018 as the risk assessment methodology for Pampered Pets' current operations, and in the follow-on quantitative report (Unit 11), which enumerated and quantified supply chain and quality risks using a three-point probability model.</p>
+    </div>
+    <div class="outcome">
+      <h4>2. Gather and synthesise information from multiple sources to aid in the systematic analysis of risks &amp; security issues.</h4>
+      <p>Evidenced by the range of sources used across both reports, including ISO standards, NIST guidance, ENISA's Threat Landscape report, and IBM's Cost of a Data Breach report, all synthesised to support the quantitative risk figures and the disaster recovery strategy.</p>
+    </div>
+    <div class="outcome">
+      <h4>3. Critically determine appropriate methodologies, tools and techniques to mitigate and/or solve security risks and their business impact.</h4>
+      <p>Evidenced by the selection and justification of Annualised Loss Expectancy and a PERT-based probability model, and by the prioritised, business-benefit-linked recommendations table tying each control to its commercial impact.</p>
+    </div>
+    <div class="outcome">
+      <h4>4. Articulate the legal, social, ethical, and professional issues faced by information security and risk professionals.</h4>
+      <p>Evidenced by treating GDPR compliance as a mandatory business requirement in the quantitative report, and by the discussion of vendor lock-in trade-offs in the disaster recovery strategy.</p>
+    </div>
+
+    <h3 class="sans" style="color:var(--navy-deep); font-size:1.05rem; margin:34px 0 14px;">Artefacts</h3>
+
+    <div class="card">
+      <span class="tag">UNIT 6</span><span class="tag">TEAM EXERCISE</span>
+      <h3>Risk Identification and Digitalisation Strategy Report</h3>
+      <p>A risk assessment of Pampered Pets, a fictional bricks-and-mortar retailer, comparing the status quo against a proposed digital transformation. Produced jointly with Sopheaktra Chea (Group 3), using ISO/IEC 27005:2018 for the current-state assessment and STRIDE for the digitalisation threat model.</p>
+      <p class="meta">Tutor feedback: "Demonstrates very excellent understanding of the context and application. The review is comprehensive... Comprehensive elicitation of risk factors. Evidence of strong critique. Well structured and presented."</p>
+      <a class="btn" href="Risk_Identification_Report_Group3.pdf">Download report (PDF)</a>
+    </div>
+
+    <div class="card">
+      <span class="tag">UNIT 11</span><span class="tag">INDIVIDUAL / TEAM EXERCISE</span>
+      <h3>Quantitative Risk Assessment &amp; Disaster Recovery Strategy</h3>
+      <p>A follow-on executive summary quantifying the probability and financial exposure of quality and supply chain risks for Pampered Pets' global digitalisation, using Annualised Loss Expectancy and a PERT-based probability model, plus a disaster recovery strategy meeting a sub-one-minute RTO/RPO requirement.</p>
+      <a class="btn" href="Pampered_Pets_Quantitative_Risk_Assessment.docx">Download report (Word)</a>
+    </div>
+
+    <h3 class="sans" style="color:var(--navy-deep); font-size:1.05rem; margin:34px 0 14px;">Team Meeting Notes</h3>
+    <div class="card">
+      <p>Sopheaktra and I communicated mainly through the module platform and WhatsApp. We agreed a working plan early on (3–4 June): each of us would draft our own section independently, then combine the strongest parts into one report, followed by a joint review before submission. On 5 June, after comparing both of our drafts, I recommended using Sopheaktra's version as the base since it was technically stronger, and suggested three additions: a Business Impact Analysis section, a conclusion paragraph, and an Asset Identification table. Sopheaktra incorporated these on 6 June, and the final report was submitted after I confirmed I was satisfied with the content.</p>
+      <a class="btn" href="Team_Meeting_Notes.docx">Full meeting notes (Word)</a>
+    </div>
+
+    <h3 class="sans" style="color:var(--navy-deep); font-size:1.05rem; margin:34px 0 14px;">Reflective Piece</h3>
+    <div class="card">
+      <p>Using the Rolfe et al. (2001) What / So What / Now What model, I reflect on what I learned about risk management as a discipline (particularly the value of quantifying risk rather than relying on qualitative labels), my individual contribution and my teammate's, and how this module has changed the way I approach communicating risk professionally.</p>
+      <a class="btn" href="Sarah_Khalid_Reflective_Piece.docx">Read full reflection (Word)</a>
+    </div>
+
+    <h3 class="sans" style="color:var(--navy-deep); font-size:1.05rem; margin:34px 0 14px;">Professional Skills Matrix &amp; Action Plan</h3>
+    <table class="skills">
+      <tr><th>Skill</th><th>Rating</th><th>Evidence</th></tr>
+      <tr><td>Communication &amp; literacy</td><td class="rating">5/5</td><td>Wrote both reports and the reflection to Harvard referencing standard.</td></tr>
+      <tr><td>Critical reflection</td><td class="rating">5/5</td><td>Structured reflective piece using the Rolfe et al. (2001) model.</td></tr>
+      <tr><td>Interpersonal</td><td class="rating">5/5</td><td>Cooperative, supportive collaboration with no conflict throughout.</td></tr>
+      <tr><td>Critical thinking &amp; analysis</td><td class="rating">4/5</td><td>Selected and justified quantitative risk models (ALE, PERT) for a real scenario.</td></tr>
+      <tr><td>Time management</td><td class="rating">4/5</td><td>Delivered the second report to a strict word cap with all requirements met.</td></tr>
+      <tr><td>IT &amp; digital</td><td class="rating">3/5</td><td>Understood cloud DR concepts, but relied on my teammate for architecture decisions — an area for development.</td></tr>
+    </table>
+    <p class="sans" style="font-size:.9rem; color:var(--muted); margin-top:14px;">Full matrix, evidence, and action plan available in the linked document.</p>
+    <a class="btn" href="Professional_Skills_Matrix_and_PDP.docx">Full skills matrix &amp; PDP (Word)</a>
+
+  </section>
+
+</main>
+
+<footer>Sarah Khalid — Security &amp; Risk Management e-Portfolio — University of Essex Online</footer>
+
+</body>
+</html>
